@@ -30,7 +30,7 @@ public class TabItemViewModel
 Create an array of two `TabItemViewModel` instances and bind it to the DataContext.
 
 ```csharp
-DataContext = new TabItemViewModel[] { 
+public ObservableCollection<TabItemViewModel> DataContext { get; set; } = new() {
     new TabItemViewModel("One", "Some content on first tab"),
     new TabItemViewModel("Two", "Some content on second tab"),
 };
@@ -41,7 +41,7 @@ The `TabStrip` header content is defined by ItemTemplate property, while `TabIte
 Finally create a `TabControl` and bind its `ItemsSource` property to the DataContext.
 
 ```xml
-<TabControl ItemsSource="{Binding}">
+<TabControl ItemsSource="{Binding DataContext}">
     <TabControl.ItemTemplate>
       <DataTemplate>
         <TextBlock Text="{Binding Header}" />
